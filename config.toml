@@ -1,4 +1,4 @@
-baseURL = "https://mirceadobreanu.com/"
+baseURL = "https://mcdobr.github.io/"
 languageCode = "en-us"
 title = "Mircea Dobreanu"
 theme = ["github.com/theNewDynamic/gohugo-theme-ananke"]
