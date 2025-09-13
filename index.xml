@@ -1,3 +1,18 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Mircea Dobreanu</title><link>https://mcdobr.github.io/</link><description>Recent content on Mircea Dobreanu</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 18 Sep 2022 14:00:00 +0300</lastBuildDate><atom:link href="https://mcdobr.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>JPA Sorting &amp; implicit joins</title><link>https://mcdobr.github.io/posts/jpa-implicit-joins-sorting/</link><pubDate>Sun, 18 Sep 2022 14:00:00 +0300</pubDate><guid>https://mcdobr.github.io/posts/jpa-implicit-joins-sorting/</guid><description>On a GET call for an HTTP API usually clients would need the functionality to filter and sort by certain fields. First, let&amp;rsquo;s suppose you have the following entities: Person, Address and City. Let&amp;rsquo;s assume that one person can have many addresses, and each address can have one city.
-Using Spring Data&amp;rsquo;s PagingAndSortingRepository the service layer method would look something like this:
-@RequiredArgsContructor public class PersonService { @Autowired private PersonRepository personRepository; public List&amp;lt;PersonDto&amp;gt; findAll() { List&amp;lt;Person&amp;gt; persons = personRepository.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Mircea Dobreanu</title><link>https://mcdobr.github.io/</link><description>Recent content on Mircea Dobreanu</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Sun, 18 Sep 2022 14:00:00 +0300</lastBuildDate><atom:link href="https://mcdobr.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>JPA Sorting &amp; implicit joins</title><link>https://mcdobr.github.io/posts/jpa-implicit-joins-sorting/</link><pubDate>Sun, 18 Sep 2022 14:00:00 +0300</pubDate><guid>https://mcdobr.github.io/posts/jpa-implicit-joins-sorting/</guid><description>&lt;p&gt;On a GET call for an HTTP API usually clients would need the functionality to filter and sort by certain fields. First, let&amp;rsquo;s suppose you have the following entities: Person, Address and City. Let&amp;rsquo;s assume that one person can have many addresses, and each address can have one city.&lt;/p&gt;
+&lt;p&gt;Using &lt;a href="https://docs.spring.io/spring-data/commons/docs/current/api/org/springframework/data/repository/PagingAndSortingRepository.html"&gt;Spring Data&amp;rsquo;s PagingAndSortingRepository&lt;/a&gt; the service layer method would look something like this:&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;@RequiredArgsContructor
+public class PersonService {
+ @Autowired
+ private PersonRepository personRepository;
+
+ public List&amp;lt;PersonDto&amp;gt; findAll() {
+ List&amp;lt;Person&amp;gt; persons = personRepository.findAll(Sort.by(Person_.address + &amp;#34;.&amp;#34; Adress_.city + &amp;#34;.&amp;#34; + City_.name));
+ return persons.stream()
+ .map(person -&amp;gt; convertToDto(person))
+ .collect(Collectors.toList());
+ }
+
+ // Handle conversion
+ // ...
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;If you are wondering where do the Person_, Address_, City_ classes come from, you should look into &lt;a href="https://docs.jboss.org/hibernate/orm/5.3/topical/html_single/metamodelgen/MetamodelGenerator.html"&gt;JPA Metamodel generator&lt;/a&gt; which generates these classes for you.&lt;/p&gt;</description></item></channel></rss>
