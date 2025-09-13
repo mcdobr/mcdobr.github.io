@@ -1,5 +1,7 @@
-module github.com/mcdobr/personal-website
+module github.com/mcdobr/mcdobr.github.io
 
-go 1.15
+go 1.21
 
-require github.com/theNewDynamic/gohugo-theme-ananke v0.0.0-20220407173640-cfee1e3cd1f8 // indirect
+require (
+	github.com/theNewDynamic/gohugo-theme-ananke/v2 v2.12.1 // indirect
+)

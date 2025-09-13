@@ -1,4 +1,15 @@
+title = "Mircea Dobreanu"
 baseURL = "https://mcdobr.github.io/"
 languageCode = "en-us"
-title = "Mircea Dobreanu"
-theme = ["github.com/theNewDynamic/gohugo-theme-ananke"]
+#theme = "ananke"
+
+defaultContentLanguage = "en"
+googleAnalytics = ""
+enableRobotsTXT = true
+
+[module]
+[[module.imports]]
+disable = false
+ignoreConfig = false
+ignoreImports = false
+path = 'github.com/theNewDynamic/gohugo-theme-ananke/v2'
