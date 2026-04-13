@@ -1,0 +1,44 @@
+title = "Mircea Dobreanu"
+description = "Backend Software Engineer"
+baseURL = "https://mcdobr.github.io/"
+languageCode = "en-us"
+defaultContentLanguage = "en"
+googleAnalytics = ""
+enableRobotsTXT = true
+
+[module]
+    [[module.imports]]
+        disable = false
+        ignoreConfig = false
+        ignoreImports = false
+        path = 'github.com/theNewDynamic/gohugo-theme-ananke/v2'
+
+[params]
+    [params.ananke]
+        [params.ananke.social]
+            # Configure on which sites it is possible to follow
+            [params.ananke.social.follow]
+                new_window_icon = true
+                networks = [
+                    "linkedin",
+                    "github"
+                ]
+            
+            # Configure sites on which to share the page
+            [params.ananke.social.share]
+                icons = true
+                sharetext = true
+                networks = [
+                    "linkedin"
+                ]
+            
+            [params.ananke.social.networks.linkedin]
+                slug = "linkedin"
+                username = "mircea-dobreanu-04b988159"
+                profile = "https://www.linkedin.com/in/mircea-dobreanu-04b988159"
+
+            [params.ananke.social.networks.github]
+                #slug = "github"
+                username = "mcdobr"
+                profile = "https://github.com/mcdobr"
+            
